@@ -26,7 +26,7 @@ export const shades = {
     900: "#2b0006",
   },
   neutral: {
-    //yellow
+    //neutral
     100: "#f5f5f5",
     200: "#ecebeb",
     300: "#e2e1e1",
