@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -7,6 +7,13 @@ import {
   useLocation,
 } from "react-router-dom";
 import Home from "@/scenes/home";
+import ItemDetails from "@/scenes/itemDetails";
+import Checkout from "@/scenes/checkout";
+import Confirmation from "@/scenes/confirmation";
+import Navbar from "./scenes/global/Navbar";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import { themeSettings } from "./theme";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -17,14 +24,22 @@ const ScrollToTop = () => {
 };
 
 function App() {
+  const theme = useMemo(() => createTheme(themeSettings), []);
   return (
     <div className="app">
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Router>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <Navbar />
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/item/:itemId" element={<ItemDetails />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkout/success" element={<Confirmation />} />
+          </Routes>
+        </Router>
+      </ThemeProvider>
     </div>
   );
 }
