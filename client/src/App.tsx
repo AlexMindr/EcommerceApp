@@ -15,6 +15,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { themeSettings } from "./theme";
 import CartMenu from "./scenes/global/CartMenu";
+import Footer from "./scenes/global/Footer";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -40,6 +41,7 @@ function App() {
             <Route path="/checkout/success" element={<Confirmation />} />
           </Routes>
           <CartMenu />
+          <Footer />
         </Router>
       </ThemeProvider>
     </div>

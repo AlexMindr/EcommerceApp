@@ -10,11 +10,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
-type Props = {};
-
 const images = import.meta.glob("@/assets/*");
 
-const MainCarousel = (props: Props) => {
+const MainCarousel = () => {
   const { palette } = useTheme();
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
@@ -83,12 +81,8 @@ const MainCarousel = (props: Props) => {
           >
             <Typography color={palette.secondary[200]}>-- NEW ITEMS</Typography>
             <Typography variant="h1">Summer Sale</Typography>
-            <Typography
-              fontWeight="bold"
-              color={palette.secondary[300]}
-              sx={{ textDecoration: "underline" }}
-            >
-              Discover More
+            <Typography fontWeight="bold" color={palette.secondary[300]}>
+              ↓ Discover More ↓
             </Typography>
           </Box>
         </Box>

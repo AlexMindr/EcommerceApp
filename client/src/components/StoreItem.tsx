@@ -9,7 +9,7 @@ import { ItemType } from "@/shared/types";
 
 type Props = {
   item: ItemType;
-  width: number;
+  width?: number;
 };
 
 const StoreItem = ({ item, width }: Props) => {
@@ -40,7 +40,7 @@ const StoreItem = ({ item, width }: Props) => {
           alt={item?.attributes?.name}
           height="400px"
           width="300px"
-          src={`${import.meta.env.VITE_BASE_URL}/${url}
+          src={`${import.meta.env.VITE_BASE_URL}${url}
             `}
           onClick={() => navigate(`/item/${item.id}`)}
           style={{ cursor: "pointer" }}
@@ -83,11 +83,11 @@ const StoreItem = ({ item, width }: Props) => {
       <Box mt="3px">
         <Typography variant="subtitle2" color={palette.neutral.dark}>
           {category
-            .replace(/[A-Z]/g, " $1")
+            .replace(/([A-Z])/g, " $1")
             .replace(/^./, (str) => str.toUpperCase())}
         </Typography>
         <Typography>{name}</Typography>
-        <Typography fontWeight="bold">{price}</Typography>
+        <Typography fontWeight="bold">${price}</Typography>
       </Box>
     </Box>
   );
