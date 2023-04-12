@@ -1,9 +1,9 @@
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import CloseIcon from "@mui/icons-material/Close";
-import { setIsCartOpen } from "@/state/cartSlice";
+import { setIsCartOpen } from "@/store/cartSlice";
 import { useNavigate } from "react-router-dom";
-import { RootState } from "@/state";
+import { RootState } from "@/store";
 import FlexBox from "@/components/FlexBox";
 import CartItem from "@/components/CartItem";
 

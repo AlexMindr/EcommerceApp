@@ -8,7 +8,7 @@ import {
   decreaseCount,
   increaseCount,
   removeFromCart,
-} from "@/state/cartSlice";
+} from "@/store/cartSlice";
 import FlexBox from "@/components/FlexBox";
 
 type Props = {

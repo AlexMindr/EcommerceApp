@@ -8,12 +8,11 @@ import {
   Button,
   Tabs,
   Tab,
-  Divider,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { addToCart } from "@/state/cartSlice";
+import { addToCart } from "@/store/cartSlice";
 import { useParams, Link } from "react-router-dom";
 import { ItemType } from "@/shared/types";
 import StoreItem from "@/components/StoreItem";
@@ -150,7 +149,12 @@ const ItemDetails = () => {
               <FavoriteBorderOutlinedIcon />
               <Typography ml="5px">Add to wishlist</Typography>
             </Box>
-            <Typography>CATEGORIES: {item?.attributes?.category}</Typography>
+            <Typography>
+              CATEGORIES:{" "}
+              {item?.attributes?.category
+                .replace(/([A-Z])/g, " $1")
+                .replace(/^./, (str) => str.toUpperCase())}
+            </Typography>
           </Box>
         </Box>
       </Box>

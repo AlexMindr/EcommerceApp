@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { IconButton, Box, Typography, useTheme, Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { addToCart } from "@/state/cartSlice";
+import { addToCart } from "@/store/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { ItemType } from "@/shared/types";
 

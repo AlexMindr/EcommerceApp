@@ -9,8 +9,8 @@ import {
   SearchOutlined,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { setIsCartOpen } from "@/state/cartSlice";
-import { RootState } from "@/state";
+import { setIsCartOpen } from "@/store/cartSlice";
+import { RootState } from "@/store";
 
 const Navbar = () => {
   const { palette } = useTheme();

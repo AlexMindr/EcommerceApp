@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Tabs, Tab, Box, Typography, useMediaQuery } from "@mui/material";
 import StoreItem from "@/components/StoreItem";
 import { useDispatch, useSelector } from "react-redux";
-import { setItems } from "@/state/cartSlice";
-import { RootState } from "@/state";
+import { setItems } from "@/store/cartSlice";
+import { RootState } from "@/store";
 import { ItemType } from "@/shared/types";
 
 const ShoppingList = () => {
