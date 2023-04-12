@@ -27,7 +27,7 @@ const CartItem = ({ item }: Props) => {
             alt={item?.attributes?.name}
             height="165px"
             width="125px"
-            src={`${import.meta.env.VITE_BASE_URL}/${
+            src={`${import.meta.env.VITE_BASE_URL}${
               item?.attributes?.image?.data?.attributes?.formats?.medium?.url
             }`}
           />
