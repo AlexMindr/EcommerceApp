@@ -112,30 +112,31 @@ const Checkout = () => {
     }
   };
 
-  // async function makePayment(values: FormValues) {
-  //   const stripe = await stripePromise;
-  //   const reqBody = {
-  //     userName: [
-  //       values.billingAddress.firstName,
-  //       values.billingAddress.lastName,
-  //     ].join(" "),
-  //     email: values.email,
-  //     products: cart.map(({ id, count }) => ({
-  //       id,
-  //       count,
-  //     })),
-  //   };
-  //   const response = await fetch(
-  //     `${import.meta.env.VITE_BASE_URL}/api/orders`,
-  //     {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(reqBody),
-  //     }
-  //   );
-  //   const session = await response.json();
-  //   await stripe?.redirectToCheckout({ sessionId: session.id, });
-  // }
+  async function makePayment(values: FormValues) {
+    const stripe = await stripePromise;
+    const reqBody = {
+      userName: [
+        values.billingAddress.firstName,
+        values.billingAddress.lastName,
+      ].join(" "),
+      email: values.email,
+      products: cart.map(({ id, count }) => ({
+        id,
+        count,
+      })),
+    };
+    const response = await fetch(
+      `${import.meta.env.VITE_BASE_URL}/api/orders`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reqBody),
+      }
+    );
+    const session = await response.json();
+    await stripe?.redirectToCheckout({ sessionId: session.id });
+  }
+
   return (
     <Box width="80%" m="100px auto">
       <Stepper activeStep={activeStep} sx={{ m: "20px 0" }}>
@@ -212,7 +213,6 @@ const Checkout = () => {
                     borderRadius: 0,
                     p: "15px 40px",
                   }}
-                  onClick={() => setActiveStep(activeStep - 1)}
                 >
                   {isFirstStep ? "Next" : "Place Order"}
                 </Button>
