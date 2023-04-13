@@ -15,23 +15,21 @@ export const cartSlice = createSlice({
       state.items = action.payload;
     },
     addToCart: (state, action) => {
-      //TODO check after simple func + increased/decresease for 0 & <1
-      //   if (
-      //     state.cart.find(
-      //       (item: CartItemType) => item.id === action.payload.item?.id
-      //     ) == null
-      //   ) {
-      //     state.cart = [...state.cart, action.payload.item];
-      //   } else {
-      //     state.cart = state.cart.map((item: CartItemType) => {
-      //       if (item.id === action.payload.item?.id) {
-      //         return { ...item, count: item.count + 1 };
-      //       } else {
-      //         return item;
-      //       }
-      //     });
-      //   }
-      state.cart = [...state.cart, action.payload.item];
+      if (
+        state.cart.find(
+          (item: CartItemType) => item.id === action.payload.item?.id
+        ) == null
+      ) {
+        state.cart = [...state.cart, action.payload.item];
+      } else {
+        state.cart = state.cart.map((item: CartItemType) => {
+          if (item.id === action.payload.item?.id) {
+            return { ...item, count: item.count + 1 };
+          } else {
+            return item;
+          }
+        });
+      }
     },
     removeFromCart: (state, action) => {
       state.cart = state.cart.filter(
@@ -46,7 +44,7 @@ export const cartSlice = createSlice({
     },
     decreaseCount: (state, action) => {
       state.cart.map((item) => {
-        if (item.id === action.payload.id) item.count--;
+        if (item.id === action.payload.id && item.count > 1) item.count--;
         return item;
       });
     },

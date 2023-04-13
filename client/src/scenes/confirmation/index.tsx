@@ -1,9 +1,15 @@
-import React from "react";
+import { Box, Alert, AlertTitle } from "@mui/material";
 
-type Props = {};
-
-const Confirmation = (props: Props) => {
-  return <div>Confirmation</div>;
+const Confirmation = () => {
+  return (
+    <Box m="90px auto" width="80%" height="50vh">
+      <Alert severity="success">
+        <AlertTitle>Success</AlertTitle>
+        You have successfuly made an item order -{" "}
+        <strong>Congrats on making your purchase</strong>
+      </Alert>
+    </Box>
+  );
 };
 
 export default Confirmation;
